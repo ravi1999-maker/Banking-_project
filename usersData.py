@@ -10,7 +10,7 @@ import ast
 
 db = client.restfulapi
 
-collection = db.users
+coll = db.account
 
 
 
@@ -86,5 +86,5 @@ def delete_user(account_no):
     data = collection.find_one({'account_number': account_no})
     if data:
         collection.delete_many({"account_number": account_no})
-        return make_response(jsonify({"msg": "User deleted..."}), 200)
-    return make_response(jsonify({"msg": "User not found"}), 404)
+        return make_response(jsonify({"msg": "User deleted..."}), 400)
+    return make_response(jsonify({"msg": "User not found"}), 503)
